@@ -30,138 +30,245 @@
         }
 
         /* Хедер */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 1.5rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
-            transition: var(--transition);
-        }
+        /* ===== HEADER STYLES ===== */
+#header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1.5rem 0;
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
 
-        header.scrolled {
-            padding: 1rem 5%;
-            background-color: rgba(255, 255, 255, 0.98);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
-        }
+#header.scrolled {
+    padding: 1rem 0;
+    background-color: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+}
 
-        .header-content {
-            display: flex;
-            align-items: center;
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            justify-content: space-between;
-        }
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
 
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-right: auto; /* Логотип слева */
-        }
+/* Logo styles */
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    z-index: 1001; /* Поверх мобильного меню */
+}
 
-        .logo-icon {
-            width: 30px;
-            height: 30px;
-            background-color: var(--primary-color);
-            border-radius: 50%;
-            display: inline-block;
-        }
+.logo-icon {
+    width: 30px;
+    height: 30px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    display: inline-block;
+}
 
-        .nav-container {
-            display: flex;
-            align-items: center;
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-        }
+/* Desktop navigation */
+.desktop-nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
 
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-            margin: 0;
-            padding: 0;
-        }
+.desktop-nav a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    position: relative;
+    transition: var(--transition);
+    font-size: 1.1rem;
+}
 
-        nav a {
-            text-decoration: none;
-            color: var(--text-color);
-            font-weight: 500;
-            position: relative;
-            transition: var(--transition);
-        }
+.desktop-nav a:hover {
+    color: var(--primary-color);
+}
 
-        nav a:hover {
-            color: var(--primary-color);
-        }
+.desktop-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: var(--transition);
+}
 
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--primary-color);
-            transition: var(--transition);
-        }
+.desktop-nav a:hover::after {
+    width: 100%;
+}
 
-        nav a:hover::after {
-            width: 100%;
-        }
+/* Main CTA button */
+.btn {
+    padding: 0.7rem 1.5rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0 4px 10px rgba(67, 97, 238, 0.3);
+    font-size: 1rem;
+}
 
-        .btn-container {
-            margin-left: auto; /* Кнопка справа */
-        }
+.btn:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(67, 97, 238, 0.4);
+}
 
-        .btn {
-            padding: 0.7rem 1.5rem;
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            box-shadow: 0 4px 10px rgba(67, 97, 238, 0.3);
-        }
+/* Mobile menu button */
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    width: 30px;
+    height: 20px;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    z-index: 1001;
+    position: relative;
+}
 
-        .btn:hover {
-            background-color: var(--secondary-color);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(67, 97, 238, 0.4);
-        }
+.mobile-menu-btn span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: var(--text-color);
+    transition: all 0.3s ease;
+    transform-origin: center;
+}
 
-        .btn:active {
-            transform: translateY(0);
-        }
+.mobile-menu-btn.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
 
-        /* Анимации */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+.mobile-menu-btn.active span:nth-child(2) {
+    opacity: 0;
+}
 
-        .fade-in {
-            animation: fadeIn 1s ease forwards;
-        }
+.mobile-menu-btn.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
 
-        .delay-1 { animation-delay: 0.2s; }
-        .delay-2 { animation-delay: 0.4s; }
-        .delay-3 { animation-delay: 0.6s; }
+/* Mobile navigation */
+.mobile-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: all 0.4s ease;
+    padding-top: 80px;
+}
 
+.mobile-nav.active {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.mobile-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    width: 100%;
+}
+
+.mobile-nav li {
+    margin-bottom: 30px;
+}
+
+.mobile-nav a {
+    font-size: 1.5rem;
+    color: var(--dark-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    padding: 10px 20px;
+    display: inline-block;
+}
+
+.mobile-nav a:hover {
+    color: var(--primary-color);
+}
+
+.mobile-nav .btn {
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    margin-top: 20px;
+}
+
+/* No scroll when menu is open */
+body.no-scroll {
+    overflow: hidden;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .desktop-nav {
+        display: none;
+    }
+    
+    .mobile-menu-btn {
+        display: flex;
+    }
+    
+    /* Hide desktop CTA button */
+    .btn.fade-in.delay-3 {
+        display: none;
+    }
+    
+    /* Adjust header padding */
+    #header {
+        padding: 1rem 0;
+    }
+    
+    #header.scrolled {
+        padding: 0.8rem 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: 1.5rem;
+    }
+    
+    .logo-icon {
+        width: 25px;
+        height: 25px;
+    }
+    
+    .mobile-nav a {
+        font-size: 1.3rem;
+    }
+}
         .hero {
         padding: 180px 5% 100px;
         background-color: #f8f9fa;
@@ -430,31 +537,43 @@
         }
     }
     .reviews {
-        padding: 100px 5%;
+        padding: 80px 5%;
         background-color: #f8f9fa;
-        overflow: hidden;
+        position: relative;
     }
     
-    .reviews-container {
-        position: relative;
-        margin: 50px auto;
+    .reviews-slider {
         max-width: 1200px;
-        overflow: hidden;
+        margin: 50px auto 0;
+        position: relative;
     }
     
     .reviews-track {
         display: flex;
-        gap: 30px;
         transition: transform 0.5s ease;
-        padding: 20px 0;
+        padding: 20px 10px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none; /* Firefox */
+    }
+    
+    .reviews-track::-webkit-scrollbar {
+        display: none; /* Chrome/Safari */
     }
     
     .review-card {
-        min-width: 350px;
+        min-width: calc(33.333% - 20px);
+        scroll-snap-align: start;
         background: white;
         border-radius: 15px;
         padding: 30px;
-        box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        margin: 0 10px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        transition: all 0.3s ease;
+        flex: 0 0 auto;
+        max-width: 60rem;
     }
     
     .review-header {
@@ -470,6 +589,7 @@
         border-radius: 50%;
         background-size: cover;
         background-position: center;
+        flex-shrink: 0;
     }
     
     .review-name {
@@ -489,33 +609,93 @@
         line-height: 1.6;
     }
     
-    .reviews-nav {
+    .slider-controls {
         display: flex;
         justify-content: center;
-        gap: 20px;
+        align-items: center;
+        gap: 30px;
         margin-top: 30px;
     }
     
-    .nav-btn {
+    .slider-btn {
         width: 50px;
         height: 50px;
         border-radius: 50%;
         border: none;
+        background-color: white;
+        color: var(--primary-color);
+        cursor: pointer;
+        transition: var(--transition);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+    
+    .slider-btn:hover {
         background-color: var(--primary-color);
         color: white;
-        font-size: 1.2rem;
+        transform: scale(1.1);
+    }
+    
+    .slider-btn svg {
+        width: 24px;
+        height: 24px;
+    }
+    
+    .slider-dots {
+        display: flex;
+        gap: 10px;
+    }
+    
+    .slider-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: rgba(67, 97, 238, 0.2);
         cursor: pointer;
         transition: var(--transition);
     }
     
-    .nav-btn:hover {
-        background-color: var(--secondary-color);
-        transform: scale(1.1);
+    .slider-dot.active {
+        background-color: var(--primary-color);
+        transform: scale(1.2);
+    }
+    
+    /* Адаптация под мобильные устройства */
+    @media (max-width: 1024px) {
+        .review-card {
+            min-width: calc(50% - 20px);
+        }
     }
     
     @media (max-width: 768px) {
         .review-card {
-            min-width: 280px;
+            min-width: calc(100% - 20px);
+        }
+        
+        .slider-controls {
+            gap: 15px;
+        }
+        
+        .slider-btn {
+            width: 40px;
+            height: 40px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .reviews {
+            padding: 60px 5%;
+        }
+        
+        .review-card {
+            padding: 20px;
+        }
+        
+        .review-avatar {
+            width: 50px;
+            height: 50px;
         }
     }
      .application {
@@ -818,29 +998,41 @@
     </style>
 </head>
 <body>
-    <!-- Хедер -->
-    <header id="header">
-        <div class="header-content">
-            <a href="#" class="logo fade-in">
-                <span class="logo-icon"></span>
-                Sparkyschool
-            </a>
-            
-            <div class="nav-container">
-                <nav>
-                    <ul>
-                        <li><a href="#courses" class="fade-in delay-1">Курсы</a></li>
-                        <li><a href="#teachers" class="fade-in delay-2">Преподаватели</a></li>
-                        <li><a href="#reviews" class="fade-in delay-1">Отзывы</a></li>
-                        <li><a href="#contacts" class="fade-in delay-2">Контакты</a></li>
-                    </ul>
-                </nav>
-            </div>
-            
-            <div class="btn-container">
-                <button class="btn fade-in delay-3">Записаться</button>
-            </div>
-        </div>
+   <!-- Заменить существующий header на этот -->
+<header id="header">
+    <div class="header-content">
+        <a href="#" class="logo fade-in">
+            <span class="logo-icon"></span>
+            SparkySchool
+        </a>
+        
+        <nav class="desktop-nav">
+            <ul>
+                <li><a href=".teachers" class="fade-in delay-1">Преподаватели</a></li>
+                <li><a href=".reviews" class="fade-in delay-2">Отзывы</a></li>
+                <li><a href=".faq" class="fade-in delay-1">FAQ</a></li>
+            </ul>
+        </nav>
+        
+        <button class="btn fade-in delay-3" onclick="document.querySelector('.application').scrollIntoView({behavior: 'smooth'})">Записаться</button>
+        
+        <!-- Мобильное меню -->
+        <button class="mobile-menu-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+    
+    <!-- Мобильное меню (появляется при клике) -->
+    <nav class="mobile-nav">
+        <ul>
+            <li><a href="#teachers">Преподаватели</a></li>
+            <li><a href="#reviews">Отзывы</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><button class="btn" onclick="document.querySelector('.application').scrollIntoView({behavior: 'smooth'}); closeMobileMenu()">Записаться</button></li>
+        </ul>
+    </nav>
     </header>
     <section class="hero">
     <div class="hero-content">
@@ -981,13 +1173,14 @@
         </div>
     </div>
     </section>
-    <section class="reviews">
+    <section class="reviews" id="reviews">
     <div class="container">
         <h2 class="section-title fade-in">Отзывы наших учеников</h2>
-        <div class="reviews-container">
+        
+        <div class="reviews-slider">
             <div class="reviews-track">
                 <!-- Отзыв 1 -->
-                <div class="review-card fade-in delay-1">
+                <div class="review-card">
                     <div class="review-header">
                         <div class="review-avatar" style="background-image: url('https://randomuser.me/api/portraits/women/44.jpg')"></div>
                         <div class="review-author">
@@ -1001,7 +1194,7 @@
                 </div>
                 
                 <!-- Отзыв 2 -->
-                <div class="review-card fade-in delay-2">
+                <div class="review-card">
                     <div class="review-header">
                         <div class="review-avatar" style="background-image: url('https://randomuser.me/api/portraits/men/32.jpg')"></div>
                         <div class="review-author">
@@ -1015,7 +1208,7 @@
                 </div>
                 
                 <!-- Отзыв 3 -->
-                <div class="review-card fade-in delay-1">
+                <div class="review-card">
                     <div class="review-header">
                         <div class="review-avatar" style="background-image: url('https://randomuser.me/api/portraits/women/63.jpg')"></div>
                         <div class="review-author">
@@ -1029,7 +1222,7 @@
                 </div>
                 
                 <!-- Отзыв 4 -->
-                <div class="review-card fade-in delay-2">
+                <div class="review-card">
                     <div class="review-header">
                         <div class="review-avatar" style="background-image: url('https://randomuser.me/api/portraits/men/54.jpg')"></div>
                         <div class="review-author">
@@ -1042,10 +1235,20 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="reviews-nav">
-            <button class="nav-btn prev-btn">←</button>
-            <button class="nav-btn next-btn">→</button>
+            
+            <div class="slider-controls">
+                <button class="slider-btn prev-btn" aria-label="Предыдущий отзыв">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <div class="slider-dots"></div>
+                <button class="slider-btn next-btn" aria-label="Следующий отзыв">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
         </div>
     </div>
     </section>
@@ -1053,7 +1256,7 @@
     <div class="container">
         <div class="application-form fade-in">
             <h2 class="section-title">Оставьте заявку на консультацию</h2>
-            <p class="form-subtitle">Мы перезвоним вам в течение 15 минут</p>
+            <p class="form-subtitle">Мы перезвоним вам в течении 15 минут</p>
             
             <form class="form">
                 <div class="form-group">
@@ -1212,32 +1415,7 @@
                 });
             }, 100);
         });
-        document.addEventListener('DOMContentLoaded', () => {
-        const track = document.querySelector('.reviews-track');
-        const prevBtn = document.querySelector('.prev-btn');
-        const nextBtn = document.querySelector('.next-btn');
-        let currentPosition = 0;
         
-        const moveTrack = () => {
-            track.style.transform = `translateX(${currentPosition}px)`;
-        };
-        
-        nextBtn.addEventListener('click', () => {
-            currentPosition -= 380;
-            if (currentPosition < -track.scrollWidth + 350) {
-                currentPosition = 0;
-            }
-            moveTrack();
-        });
-        
-        prevBtn.addEventListener('click', () => {
-            currentPosition += 380;
-            if (currentPosition > 0) {
-                currentPosition = -track.scrollWidth + 350;
-            }
-            moveTrack();
-        });
-    });
      // Добавить в секцию скриптов
     document.querySelector('.form').addEventListener('submit', function(e) {
         e.preventDefault();
@@ -1256,6 +1434,166 @@
                     otherItem.classList.remove('active');
                 }
             });
+        });
+    });
+    // Обновленный скрипт для хедера
+    document.addEventListener('DOMContentLoaded', function() {
+        // Мобильное меню
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const mobileNav = document.querySelector('.mobile-nav');
+        
+        function toggleMobileMenu() {
+            mobileNav.classList.toggle('active');
+            mobileMenuBtn.classList.toggle('active');
+            document.body.classList.toggle('no-scroll');
+        }
+        
+        function closeMobileMenu() {
+            mobileNav.classList.remove('active');
+            mobileMenuBtn.classList.remove('active');
+            document.body.classList.remove('no-scroll');
+        }
+        
+        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+        
+        // Закрытие меню при клике на ссылку
+        document.querySelectorAll('.mobile-nav a').forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+        
+        // Плавный скролл для всех ссылок
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if(this.getAttribute('href').startsWith('#')) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+        
+        // Анимация хедера при скролле
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if(window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    });
+    // Скрипт для слайдера отзывов
+    document.addEventListener('DOMContentLoaded', function() {
+        const track = document.querySelector('.reviews-track');
+        const cards = document.querySelectorAll('.review-card');
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+        const dotsContainer = document.querySelector('.slider-dots');
+        let currentIndex = 0;
+        let cardWidth = cards[0].offsetWidth + 20; // width + margin
+        
+        // Создаем точки навигации
+        cards.forEach((_, index) => {
+            const dot = document.createElement('div');
+            dot.classList.add('slider-dot');
+            if(index === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => {
+                goToSlide(index);
+            });
+            dotsContainer.appendChild(dot);
+        });
+        
+        const dots = document.querySelectorAll('.slider-dot');
+        
+        // Функция перехода к конкретному слайду
+        function goToSlide(index) {
+            currentIndex = index;
+            const scrollPosition = currentIndex * cardWidth;
+            track.scrollTo({
+                left: scrollPosition,
+                behavior: 'smooth'
+            });
+            updateDots();
+        }
+        
+        // Обновление активной точки
+        function updateDots() {
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIndex);
+            });
+        }
+        
+        // Кнопка "назад"
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex > 0) ? currentIndex - 1 : cards.length - 1;
+            goToSlide(currentIndex);
+        });
+        
+        // Кнопка "вперед"
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex < cards.length - 1) ? currentIndex + 1 : 0;
+            goToSlide(currentIndex);
+        });
+        
+        // Обновление ширины карточки при ресайзе
+        window.addEventListener('resize', () => {
+            cardWidth = cards[0].offsetWidth + 20;
+        });
+        
+        // Обработка свайпа на мобильных
+        let startX, scrollLeft, isDown;
+        
+        track.addEventListener('mousedown', (e) => {
+            isDown = true;
+            startX = e.pageX - track.offsetLeft;
+            scrollLeft = track.scrollLeft;
+        });
+        
+        track.addEventListener('mouseleave', () => {
+            isDown = false;
+        });
+        
+        track.addEventListener('mouseup', () => {
+            isDown = false;
+            // Определяем ближайшую карточку для snap
+            const scrollPos = track.scrollLeft;
+            currentIndex = Math.round(scrollPos / cardWidth);
+            goToSlide(currentIndex);
+        });
+        
+        track.addEventListener('mousemove', (e) => {
+            if(!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - track.offsetLeft;
+            const walk = (x - startX) * 2;
+            track.scrollLeft = scrollLeft - walk;
+        });
+        
+        // Touch события для мобильных
+        track.addEventListener('touchstart', (e) => {
+            isDown = true;
+            startX = e.touches[0].pageX - track.offsetLeft;
+            scrollLeft = track.scrollLeft;
+        });
+        
+        track.addEventListener('touchend', () => {
+            isDown = false;
+            const scrollPos = track.scrollLeft;
+            currentIndex = Math.round(scrollPos / cardWidth);
+            goToSlide(currentIndex);
+        });
+        
+        track.addEventListener('touchmove', (e) => {
+            if(!isDown) return;
+            const x = e.touches[0].pageX - track.offsetLeft;
+            const walk = (x - startX) * 2;
+            track.scrollLeft = scrollLeft - walk;
         });
     });
     </script>
