@@ -1006,6 +1006,28 @@ body.no-scroll {
         margin: 0 auto;
     }
     }
+    @media (max-width: 768px) {
+    .reviews-slider {
+        overflow: hidden;
+    }
+
+    .reviews-track {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        padding: 0 10px;
+        box-sizing: border-box;
+    }
+
+    .review-card {
+        min-width: 100% !important;
+        flex: 0 0 100% !important;
+        box-sizing: border-box;
+        margin: 0 auto;
+    }
+}
+
     </style>
 </head>
 <body>
